@@ -74,7 +74,7 @@ Finally, run the development server. If you add 0.0.0.0, other devices in the lo
 ```bash
 python manage.py runserver 0.0.0.0:8000
 ```
-The project will be available at **http://10.152.219.203:8000/**.
+
 
 ## Code Documentation
 Each file contains notes that describe its function. Before adding or altering files, please read Manuel.md. It describes the general project structure and the interconnectivity of the file system. It serves as a manual to change exisiting features and add new ones. </br>
