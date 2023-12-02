@@ -37,14 +37,14 @@ If the installation of vmd-python doesn't work, go to https://github.com/Eigenst
 
 Finally, setup the local configurations. Open a new file **.env** and write the following:
 ```
-SECRET_KEY=rqr_cjv4igscyu8&&(0ce(=sy=f2)p=f_wn&@0xsp7m$@!kp=d
+SECRET_KEY=***
 DEBUG=True
-ALLOWED_HOSTS=10.152.219.203,grizzly
-DATABASE_URL=sqlite:///db.sqlite3
-EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=t38webservices@gmail.com
-EMAIL_HOST_PASSWORD=bzwatxvlpbcvurue
-RECIPIENT_ADDRESS=y.saremi@tum.de
+ALLOWED_HOSTS=***
+DATABASE_URL=***
+EMAIL_HOST=***
+EMAIL_HOST_USER=***
+EMAIL_HOST_PASSWORD=***
+RECIPIENT_ADDRESS=***
 ```
 
 **Congratulations!** Now you should be all set.
