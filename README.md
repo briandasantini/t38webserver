@@ -32,7 +32,7 @@ conda config --add channels salilab
 
 conda install modeller
 ```
-However, it will instruct you to modify /home/user/miniconda3/envs/server/lib/modeller-10.3/modlib/modeller/config.py ~~or wherever your config.py is located,~~ and replace XXXX with your Modeller licence key (in this case: MODELIRANJE). Execute the command again. </br>
+However, it will instruct you to modify /home/user/miniconda3/envs/server/lib/modeller-10.3/modlib/modeller/config.py and replace XXXX with your Modeller licence key (in this case: MODELIRANJE). Execute the command again. </br>
 If the installation of vmd-python doesn't work, go to https://github.com/Eigenstate/vmd-python, download the repo, and run it.
 
 Finally, setup the local configurations. Open a new file **.env** and write the following:
@@ -51,21 +51,21 @@ RECIPIENT_ADDRESS=***
 
 
 ### Update QUEUE-ING
-Added a queue-ing system with Celery, redis, redis-server. SQL couldn't handle multiple submited jobs.
-All three are now in the requierements.
-To activate this, one must run in the terminal before running the django server:
+Added a queue-ing system with Celery, redis, redis-server. SQL couldn't handle multiple submitted jobs.
+All three are now in the requirements.
+To activate this, one must run in the terminal before running the Django server:
 ```bash
 redis-server
 ```
 It should automatically run in localhols:6379. 
-Celery is now in control of the backend job tasks, you can monitor how they're doing by running the following command from the root directory:
+Celery is now in control of the backend job tasks; you can monitor how they're doing by running the following command from the root directory:
 
 ```bash
 celery -A myproject worker --loglevel=info
 ``` 
-Task code error will be now written here.
+Task code error will now be written here.
 
-## Running The Sever
+## Running The Server
 First, create the database:
 ```bash
 python manage.py migrate
@@ -78,11 +78,5 @@ The project will be available at **http://10.152.219.203:8000/**.
 
 ## Code Documentation
 Each file contains notes that describe its function. Before adding or altering files, please read Manuel.md. It describes the general project structure and the interconnectivity of the file system. It serves as a manual to change exisiting features and add new ones. </br>
-ToDoList.md contains suggestions to implement and items to improve.
 
-## Access to the Email
-**https://www.sitepoint.com/django-send-email/**
-We needed an email address for the contact formular. 
-email adress: t38webservices@gmail.com
-password: t38BSc13
-app password: **bzwa txvl pbcv urue**
+
