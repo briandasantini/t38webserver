@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <!-- other head elements -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/cpep-trans.png' %}">
+</head>
+<body>
+    <!-- rest of your body content -->
+</body>
+</html>
+{% load crispy_forms_tags %}
+
+<!-- 
+    base_jobs.html file is the parent template for all job submission pages and child templates would extend it to include the specific content for that page. It contains the common elements 
+    that are shared across multiple pages, such as the submission form. It acts as a foundation for other templates to extend and build upon, reducing the amount of repetitive code 
+    and making it easier to maintain the overall design and layout of the website.
+-->
+
+<!-- 
+    Child templates can include the following features: header, simulation image, brief text description and a reference for citations.
+    If you wish to add a new simulation page, please read Manual.md.
+-->
+
+{% block content %}
+    <h1 style="margin-bottom:2ex">{% block header %}{% endblock%}</h1>
+    <div class="flex-container">
+        <div id="item-a">
+            <img
+                src="{% block image%}{% endblock %}"
+                class="w-100 shadow-1-strong rounded mb-4"
+                style="object-fit: cover; opacity: 0.9; max-width: 57%; margin-right: 50px;"/>
+                <p class="custom-paragraph">
+                    {% block text %}{% endblock %}
+                </p>
+                <p>
+                
+                </p>
+    
+                <p><small>
+                    Please cite these references if you use the server in your research:<br>
+                    {% block reference %}{% endblock %}
+                </small></p>
+        </div>
+        <div class="item-b" style="min-width: 37%; margin-left: 50px;">
+            <h2>Submit a Job</h2>
+            <form class="item" name="submitJob" novalidate="novalidate" method="POST" enctype="multipart/form-data">
+            <!-- https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html -->
+                {% crispy form %}
+            </form>
+
+            <!-- JavaScript for handling form -->
+            <style>
+                /* Add this style to your CSS */
+                #id_target_hotspots {
+                    margin-left: 0px; /* Adjust the left margin as needed */
+                }
+            </style>
+            <script>                
+                document.addEventListener('DOMContentLoaded', (event) => {
+                // Function to toggle the visibility of the residue number input and label
+                function toggleResidueNumbers() {
+                    var checkBox = document.getElementById('id_target_hotspots');
+                    var residueInput = document.getElementById('id_residue_numbers');
+                    var residueLabel = document.querySelector('label[for="id_residue_numbers"]');
+
+                    if (checkBox.checked) {
+                    residueInput.style.display = 'block';
+                    residueLabel.style.display = 'block';
+
+                    } else {
+                    residueInput.style.display = 'none';
+                    residueLabel.style.display = 'none';
+                    }
+                }
+
+                // Attach the function to the checkbox change event
+                document.getElementById('id_target_hotspots').onchange = toggleResidueNumbers;
+
+                // Call the function initially to set the correct display state
+                toggleResidueNumbers();
+                });</script>
+
+    
+        </div>
+    </div>
+{% endblock %}

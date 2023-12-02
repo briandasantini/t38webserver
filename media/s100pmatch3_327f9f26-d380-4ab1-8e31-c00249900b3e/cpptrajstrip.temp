@@ -1,0 +1,88 @@
+
+CPPTRAJ: Trajectory Analysis. V4.25.6
+    ___  ___  ___  ___
+     | \/ | \/ | \/ | 
+    _|_/\_|_/\_|_/\_|_
+
+| Date/time: 12/01/23 13:23:07
+| Available memory: 17.954 GB
+
+INPUT: Reading input from 'reimage_center.ptraj'
+  [parm syst_8.top]
+	Reading 'syst_8.top' as Amber Topology
+	Radius Set: modified Bondi radii (mbondi)
+  [trajin remd_8.nc]
+	Reading 'remd_8.nc' as Amber NetCDF
+  [strip :Na+]
+    STRIP: Stripping atoms in mask [:Na+]
+  [strip :Cl-]
+    STRIP: Stripping atoms in mask [:Cl-]
+  [strip :WAT outprefix striped]
+    STRIP: Stripping atoms in mask [:WAT]
+	Stripped topology will be output with prefix 'striped'
+  [trajout striped_8.nc]
+	Writing 'striped_8.nc' as Amber NetCDF
+  [center :95-112]
+    CENTER: Centering coordinates using geometric center of atoms in mask (:95-112) to
+	box center.
+  [image center familiar]
+    IMAGE: By molecule to box center based on center of mass using all atoms
+           Triclinic On, familiar shape.
+---------- RUN BEGIN -------------------------------------------------
+
+PARAMETER FILES (1 total):
+ 0: syst_8.top, 26538 atoms, 6325 res, box: Trunc. Oct., 6215 mol, 6188 solvent
+
+INPUT TRAJECTORIES (1 total):
+ 0: 'remd_8.nc' is a NetCDF AMBER trajectory with coordinates, time, replicaDims, replica indices, coordinate indices, box, 1 replica dimensions, Parm syst_8.top (Trunc. Oct. box) (reading 1 of 1)
+  Coordinate processing will occur on 1 frames.
+
+OUTPUT TRAJECTORIES (1 total):
+  'striped_8.nc' (1 frames) is a NetCDF AMBER trajectory
+
+BEGIN TRAJECTORY PROCESSING:
+.....................................................
+ACTION SETUP FOR PARM 'syst_8.top' (5 actions):
+  0: [strip :Na+]
+	Stripping 13 atoms.
+	Stripped topology: 26525 atoms, 6312 res, box: Trunc. Oct., 6202 mol, 6188 solvent
+  1: [strip :Cl-]
+	Stripping 12 atoms.
+	Stripped topology: 26513 atoms, 6300 res, box: Trunc. Oct., 6190 mol, 6188 solvent
+  2: [strip :WAT outprefix striped]
+	Stripping 24752 atoms.
+	Stripped topology: 1761 atoms, 112 res, box: Trunc. Oct., 2 mol
+	Writing topology 0 (syst_8.top) to 'striped.syst_8.top' with format Amber Topology
+  3: [center :95-112]
+	Mask [:95-112] corresponds to 324 atoms.
+  4: [image center familiar]
+	Mask [*] corresponds to 1761 atoms.
+	Number of molecules to be imaged is 2
+.....................................................
+ACTIVE OUTPUT TRAJECTORIES (1):
+  striped_8.nc (coordinates, time, replicaDims, replica indices, coordinate indices, box)
+----- remd_8.nc (1-1, 1) -----
+100% Complete.
+
+Read 1 frames and processed 1 frames.
+TIME: Avg. throughput= 41.5939 frames / second.
+
+ACTION OUTPUT:
+TIME: Analyses took 0.0000 seconds.
+
+RUN TIMING:
+TIME:		Init               : 0.0000 s (  0.02%)
+TIME:		Trajectory Process : 0.0240 s ( 95.47%)
+TIME:		Action Post        : 0.0000 s (  0.00%)
+TIME:		Analysis           : 0.0000 s (  0.00%)
+TIME:		Data File Write    : 0.0000 s (  0.00%)
+TIME:		Other              : 0.0011 s (  0.05%)
+TIME:	Run Total 0.0252 s
+---------- RUN END ---------------------------------------------------
+TIME: Total execution time: 0.0403 seconds.
+--------------------------------------------------------------------------------
+To cite CPPTRAJ use:
+Daniel R. Roe and Thomas E. Cheatham, III, "PTRAJ and CPPTRAJ: Software for
+  Processing and Analysis of Molecular Dynamics Trajectory Data". J. Chem.
+  Theory Comput., 2013, 9 (7), pp 3084-3095.
+

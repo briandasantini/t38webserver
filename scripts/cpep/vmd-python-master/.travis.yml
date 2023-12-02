@@ -1,0 +1,50 @@
+language: generic
+env:
+    - PYVER=2.7 DEBUGVER=""
+    - PYVER=3.6 DEBUGVER=""
+os:
+    - linux
+    - osx
+
+addons:
+    apt:
+        packages: gdb
+
+install:
+    - |
+      if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+        wget -O miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+      elif [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+        wget -O miniconda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+      fi
+    - bash miniconda.sh -b -p $HOME/miniconda
+    - export PATH="$HOME/miniconda/bin:$PATH"
+    - hash -r
+    - conda config --set always_yes yes --set changeps1 no
+    - conda update -q conda
+    - conda info -a
+    - conda create -q -n test-environment python=$PYVER pytest tk=8.5.*
+    - conda install -n test-environment numpy>=1.13 libnetcdf expat
+    - source activate test-environment
+    - python setup.py build $DEBUGVER
+    - python setup.py install
+before_script:
+    - ulimit -c unlimited -S # enable core dumps
+script:
+    - source activate test-environment
+    - if [[ ! -z $DEBUGVER ]]; then export PRELOAD="$HOME/miniconda/envs/test-environment/lib/libasan.so"; fi
+    - LD_PRELOAD=$PRELOAD python -c "import vmd"
+    - LD_PRELOAD=$PRELOAD python setup.py test
+after_failure:
+    - |
+      if [[ $TRAVIS_OS_NAME == "osx" ]]; then
+          COREFILE=$(ls -At /cores/core* | head -n 1)
+          echo "Core: $COREFILE"
+          lldb -c $COREFILE --batch --one-line "bt"
+      else
+          COREFILE=$(find . -maxdepth 1 -name "core*" | head -n 1)
+          echo "Core: $COREFILE"
+          gdb -c "$COREFILE" python -ex "thread apply all bt" \
+                                    -ex "set pagination 0" -batch
+      fi
+

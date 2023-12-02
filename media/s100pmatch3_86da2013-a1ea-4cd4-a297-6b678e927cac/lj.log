@@ -1,0 +1,24 @@
+receptor mask :1-94
+ligand mask :95-112
+not-ligand mask !:95-112
+interpolation method: volume scaling of e
+max distance that gets added: [0.0, 0.02, 0.08, 0.16, 0.24, 0.32, 0.44, 0.68]
+min fraction of epsilon: [1.0, 0.98, 0.96, 0.92, 0.88, 0.84, 0.8, 0.74]
+d fixed / not interpolated: True
+e fixed / not interpolated: True
+1: d=0.0, e=1.0
+syst_1.top
+2: d=0.02, e=0.98
+syst_2.top
+3: d=0.08, e=0.96
+syst_3.top
+4: d=0.16, e=0.92
+syst_4.top
+5: d=0.24, e=0.88
+syst_5.top
+6: d=0.32, e=0.84
+syst_6.top
+7: d=0.44, e=0.8
+syst_7.top
+8: d=0.68, e=0.74
+syst_8.top

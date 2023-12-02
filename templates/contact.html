@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- Contact Form Page -->
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="flex-container"> <!-- A CSS flex container is a layout module that allows flexible elements to be aligned in a container. app.css file handles the flex container. -->
+  <div style="width: 57%; order: 1;">
+    <h2 class="text-center">Contact Us</h2>
+      <form id="form-group" name="submitJob" novalidate="novalidate" method="POST" enctype="multipart/form-data">
+        <!-- https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html -->
+        {% crispy form %}
+      </form>
+    <div class="mx-auto my-4 text-center">
+      <p>
+        <b>You're having trouble?</b> Do not hesitate to write us!<br>
+        We are also very thankful for any suggestions or improvements.
+      </p>
+    </div>
+  </div>
+  <div style="width: 37%; order: 2;">
+    <a href="https://www.cpa-munich.org" target="_blank">
+      <img
+        src="{% static 'img/cpa.jpg' %}"
+        class="w-100 shadow-1-strong rounded mb-4 center"
+        alt="MD Simulation"
+        style="object-fit: cover; opacity: 1; min-width: 37%; display: flex; justify-content: center;"/></a>
+    <div class="mx-auto my-4 text-center">
+	    <h4>Chair of Theoretical Biophysics (T38) - Biomolecular Dynamics</h4>
+      <p><b>Prof. Dr. Martin Zacharias</b></p>
+      <p>Center for Functional Protein Assemblies</p>
+      <p>Address: 85748 Garching, Ernst-Otto-Fischer-Straße 8</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

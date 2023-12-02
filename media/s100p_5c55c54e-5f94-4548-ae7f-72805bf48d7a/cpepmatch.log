@@ -1,0 +1,65 @@
+
+
+cPEPmatch process initiated.
+
+
+Step 1: Updating the cPEP database.
+Progress: [############--------------------------------------] 25.0%
+Step 1 complete.
+
+
+Step 2: Characterizing the protein interface.
+s100p_5c55c54e-5f94-4548-ae7f-72805bf48d7a.pdb -> interface.pdb
+Progress: [#########################-------------------------] 50.0%
+Step 2 complete.
+
+
+Step 3: Finding matches. 
+Note: This step might take longer for non-consecutive motifs.
+Progress: [######################################------------] 75.0%
+Step 3 complete.
+
+
+Step 4: Finalizing - mutating and refining your matches.
+Progress: [##################################################] 100.0%
+Yay, all steps completed successfully! 
+
+
+
+List of matches found by cPEPmatch.
+Motif Size: 5 
+Interface Cutoff: 5 
+Fit-RMSD Threshold: 0.5 
+
+ Match  PDB   Dist-RMSD      cPep Residues              PP-Interface Residues      Fit-RMSD
+
+     1  1hvz    0.4758      14   15   16   17   18      41   42   43   44   45      0.6102
+     2  2lwq    0.4037      12   13   14   15   16      41   42   43   44   45      0.6217
+     3  2lwu    0.2970      10   11   12   13   14      41   42   43   44   45      0.3077
+     4  2m3n    0.4497       3    4    5    6    7      42   43   44   45   46      0.9466
+     5  2ndm    0.3252       1    2    3    4    5      26   27   28   29   30      0.4453
+     6  2ndn    0.4521      10   11   12   13   14      42   43   44   45   46      0.6489
+     7  5eoc    0.3830       9   10   11   12   13      41   42   43   44   45      0.4150
+     8  5eoc    0.4254       1    2    3    4    5      41   42   43   44   45      0.3163
+     9  5jz8    0.4966      13   14   15   16   17      42   43   44   45   46      0.5047
+    10  5t1m    0.3498       8    9   10   11   12      26   27   28   29   30      0.1482
+    11  5vav    0.4142       9   10   11   12   13      42   43   44   45   46      0.5776
+    12  6pin    0.4040      12   13   14   15   16      41   42   43   44   45      0.5110
+    13  6pio    0.4656       1    2    3    4    5      42   43   44   45   46      0.4569
+    14  6pip    0.4824       1    2    3    4    5      42   43   44   45   46      0.4697
+    15  6u22    0.4268       8    9   10   11   12      41   42   43   44   45      0.3495
+    16  6u22    0.4296       9   10   11   12   13      42   43   44   45   46      0.2695
+    17  6u24    0.4036       9   10   11   12   13      42   43   44   45   46      0.2776
+    18  6u7w    0.3541      10   11   12   13   14      43   44   45   46   47      0.2832
+    19  6vxy    0.2625       9   10   11   12   13      42   43   44   45   46      0.4649
+    20  6vxy    0.3824       8    9   10   11   12      41   42   43   44   45      0.5366
+    21  6vxy    0.3952      10   11   12   13   14      43   44   45   46   47      0.3440
+
+ 
+Your results are now available for 30 days
+
+
+
+Thank you for using cPEPmatch!
+
+

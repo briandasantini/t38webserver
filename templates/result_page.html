@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!-- Download Results Page -->
+
+{% block title %}Download Results{% endblock %}
+
+{% block content %}
+  {% include 'includes/messages.html' %}
+    <div class="item-b" style="min-width: 37%;">
+      <h2>Download Your Results</h2>
+      <!-- https://stackoverflow.com/questions/70458166/django-how-to-pass-html-form-values-to-url-upon-form-submission -->
+      <form action="{% url 'download' %}" method="get" novalidate>
+        <!-- https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html -->
+        {% crispy form %}
+      </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,8 @@
+-O -rem 3 -i ../remd.in -o remd_1.out -c mdwat6.rst -r remd_1.rst -x remd_1.nc -p syst_1.top -inf mdinfo.001 -l logfile.001
+-O -rem 3 -i ../remd.in -o remd_2.out -c mdwat6.rst -r remd_2.rst -x remd_2.nc -p syst_2.top -inf mdinfo.002 -l logfile.002
+-O -rem 3 -i ../remd.in -o remd_3.out -c mdwat6.rst -r remd_3.rst -x remd_3.nc -p syst_3.top -inf mdinfo.003 -l logfile.003
+-O -rem 3 -i ../remd.in -o remd_4.out -c mdwat6.rst -r remd_4.rst -x remd_4.nc -p syst_4.top -inf mdinfo.004 -l logfile.004
+-O -rem 3 -i ../remd.in -o remd_5.out -c mdwat6.rst -r remd_5.rst -x remd_5.nc -p syst_5.top -inf mdinfo.005 -l logfile.005
+-O -rem 3 -i ../remd.in -o remd_6.out -c mdwat6.rst -r remd_6.rst -x remd_6.nc -p syst_6.top -inf mdinfo.006 -l logfile.006
+-O -rem 3 -i ../remd.in -o remd_7.out -c mdwat6.rst -r remd_7.rst -x remd_7.nc -p syst_7.top -inf mdinfo.007 -l logfile.007
+-O -rem 3 -i ../remd.in -o remd_8.out -c mdwat6.rst -r remd_8.rst -x remd_8.nc -p syst_8.top -inf mdinfo.008 -l logfile.008

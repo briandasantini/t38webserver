@@ -1,0 +1,9 @@
+source leaprc.protein.ff14SB
+source leaprc.water.opc
+mol = loadpdb XXXX
+solvateoct mol OPCBOX 10.0
+addions2 mol Na+ 0
+addions2 mol Cl- 0
+addions mol Na+ XXXX Cl- XXXX
+saveamberparm mol XXXX XXXX
+quit

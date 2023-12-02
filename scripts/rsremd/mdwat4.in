@@ -1,0 +1,50 @@
+# Restraint Stage 1, Heating to 300, molecular dynamics long time run (PME, restart)
+ &cntrl
+	! GENERAL FLAGS DESCRIBING THE CALCULATION
+  	imin=0, 			! Flag to run minimzation (=1 perform energy minimizatin) 
+	
+	
+	! NATURE AND FORMAT OF THE INPUT
+	ntx=5,				! Flag to read the coordinates and velocities from an ASCII coordinate file (=1 coord. but no velocities, deafult)
+	irest=1,			! Flag to restart the simulations with velocities and step counter from before (=0 do not restart sim, instead run new sim; default)
+	
+	! NATURE AND FORMAT OF THE OUTPUT	
+	ntpr=500,			! Num of Timesteps to Print Readable energy information
+	ntwx=1000,			! freq of writing coordinates to the mdcrd file
+        iwrap=0,			! If iwrap = 1, the coordinates written to the restart and trajectory files will be "wrapped" into a primary
+			  		! box, may be required to keep the coordinate output from overflowing; If iwrap = 0, no wrapping; Default=0
+
+	! FROZEN OR RESTRAINED ATOMS
+	ntr=1,				! Flag for restraining specified atoms in Cartesian space using a harmonic potential, if ntr > 0, Deafult=0
+	restraint_wt=5.0,		! The weight (in kcal/mol−Å^2) for the positional restraints.
+	restraintmask='(:1-287 & !@H=)',! String that specifies the restrained atoms when ntr=1.
+	
+	! MOLECULAR DYNAMICS
+	nstlim=25000, 			! Number of MD-steps to be performed. Default 1.
+	dt=0.004,			! time step (psec), 0.004 possible if prmtop parmed with the HMassRepartition option
+	
+	! TEMPERATURE REGULATION
+	ntt=1,				! Specifies temperature scaling. =0: Constant total energy, assuming ntb < 2; =1: Constant temperature, with weak-coupling
+	temp0=300.0,			! Reference temperature at which the system is to be kept, if ntt > 0
+	tautp=0.1,			! Specifies the time constant (in ps) when ntt = 1. Values should range from 0.5-5.0 ps;=1.0 (Default)	
+
+	! PRESSURE REGULATION
+	ntp=1,				! Flag for constant pressure dynamics. =0 No pressure scaling (Default); =1 md with isotropic position scaling
+	taup=0.1,			! Specifies the pressure relaxation time when nto> 0. Recommended to be between 1-5 ps. =1.0 (Default)
+	
+	! SHAKE BOND LENGTH CONTRAINTS
+	ntc=2,				! Flag for SHAKE to perform bond length constraints. =1 SHAKE is not performed (default). =2 bonds involving hydrogen are constrained; TIP3P set NTF=NTC=2. 
+					! = 3 all bonds are constrained (not available for parallel or qmmm runs in sander)
+	
+	! GENERIC PARAMETERS
+	ntf=2,				! Force evaluation. If SHAKE is used (see NTC), it is not necessary to calculate forces for the constrained bonds.
+					! = 1 complete interaction is calculated (default)
+					! = 2 bond interactions involving H-atoms omitted (use with NTC=2)
+					! = 3 all the bond interactions are omitted (use with NTC=3)
+	ntb=2,				! Flag for periodic boundaries. = 0 no periodicity is applied and PME is off (default when igb > 0)
+					! = 1 constant volume (default when igb and ntp are both 0, which are their defaults)
+					! = 2 constant pressure (default when ntp > 0)
+	dielc=1.0,			! Dielectric multiplicative constant for the electrostatic interactions. Default is 1.0. 
+	cut=8.5,			! Flag that specifies the nonbonded cutoff in Angstrom
+ &end
+eof

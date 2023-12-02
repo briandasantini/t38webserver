@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <!-- other head elements -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/cpep-trans.png' %}">
+</head>
+<body>
+    <!-- rest of your body content -->
+</body>
+</html>
+<!-- Tutorial Page -->
+
+{% block title %}Tutorial{% endblock %}
+
+{% block content %}
+  
+  <article class="thin-column">
+    <h2 id="anchor-name-for-cpep-tutorial">cPEPmatch Tutorial</h2>
+    <p>cPEPmatch is a computational tool designed to help you rationally design cyclic peptides that can potentially bind to specific regions of 
+      protein-protein and protein-ligand complexes. In this tutorial, we will walk you through the process of using cPEPmatch and provide an example 
+      for better understanding.</p>
+    
+    
+    <p><b>Step 1: Identify Your Target Complex</b></p>
+    <p><i>* Download PDB Structure:</i> Start by identifying the protein-protein or protein-ligand complex you want to target. Download the crystal 
+      structure of your chosen complex from the Protein Data Bank (PDB).</p>
+    <p style="background-color: #f0f0f0; padding: 5px;"><i>S100P Example:</i> For this tutorial, we'll use the S100P - V Domain of the receptor for 
+      advanced glycation end products (RAGE) complex with PDB ID: <a href="https://www.rcsb.org/structure/2MJW" link>2MJW</a>. S100P is a calcium-binding protein that interacts with the RAGE receptor,
+       and disrupting this interaction has therapeutic potential for various diseases.</p>
+      
+    <p><b>Step 2: Inspect and Prepare the PDB File</b></p>
+    <p><i>* Inspect the PDB:</i> Take a close look at the downloaded PDB file. If necessary, perform any cleanup, such as removing unnecessary chains, 
+      renumbering residues, and ensuring the correct PDB format. Ensure there are no missing residues in the binding site.</p>
+    <p><i>Tip:</i> If there are missing residues outside the binding site, you can use tools like Modeller to fill them in for later simulations.</p>
+    <p><b>Step 3: Select cPEPmatch Parameters</b></p>
+    <p><i>* Cutoff:</i> This parameter defines the distance between the receptor and the interface. Residues within this cutoff distance will be 
+      considered part of the interface. (Default: 6 Angstroms)</p>
+    <p><i>* Threshold:</i> Set the fit-RMSD maximum for a match to fit into the targeted protein interface residues. It determines how well the cyclic
+       peptide backbone should fit those of the matched protein residues. (Default: 0.7 Angstroms - Recommended: 0.3-1.5)</p>
+    <p><i>* Motif Size:</i> This is the length of the motif residues to target. (Default: 5 amino acids, Recommended: Adjust based on the nature of
+       your binding site—lower for pocket-like or larger for flat interfaces. Lower limit is 4, upper limit is 7)</p>
+    <p><i>* (Optional) Residue Numbers:</i> Specify specific residues if you know the binding hot spots. Hot spots are residues contributing the 
+      most to binding free energy. Selecting this option allows non-consecutive motif searches. You can use experimentally known hot spots or calculate 
+      them computationally. When hot spot residues are selected, the cutoff is ignored.</p>
+    <p><i>Note:</i></p>
+    <p>* Hot spot searches may take more time.<br>
+    * A higher threshold is recommended to accommodate non-consecutive residues - but no higher than 2.<br>
+    * Ensure your hot spot count is at least as large as the motif size.</p>
+    <div style="display: flex; justify-content: center;">
+    <p style="background-color: #f0f0f0; max-width: 100%; padding: 5px;"><i>S100P Example:</i> In our case, we identified hot spots for chain A binding to chain B as 
+      residues '28 32 34 37 41 43 49 78 90 92'. We set threshold=2 and motif=5. Refer to the figure below. On the left, you'll see an example of Chain A 
+      (in magenta) and Chain B (in yellow) at the binding interface, with the hotspots highlighted in red licorice. On the right, an example of the submission 
+      form is displayed</p>
+    </div>
+    <div style="text-align: center;">
+    <img src="{% static 'img/submit_hot_cpep.jpeg' %}" alt="cPEPmatch by Brianda Santini - cyclic peptides for PPI" style="max-width: 100%;padding-right: 5px;">
+    </div><br><br>
+
+
+    <p><b>Step 4: Run cPEPmatch</b></p>
+    <p><i>* Output:</i> Submit your job, and after some time, you will receive an email with a link to download a zip file containing your results. 
+      Be sure to check your spam folder.</p>
+    <p>The zip file contains the following files:</p>
+    <p><i>* match_list.txt </i>file listing all matches, their fit values, and which cyclic peptide residues matched with the protein.</p>
+    <p><i>* match#_PDB.pdb</i> files: all your matches' cyclic peptides, which have been superimposed, mutated and refined using Modeller and MD to 
+      fit the matched residues. Note: If the peptide contains non-standard residues, mutations will not be executed, and the output file will have 
+      "_non-mutated" in the name. Tip: You can perform the mutations using Amber Tools or Modeller.</p>
+    <p><i>* interface.pdb</i> file: this is a PDB file with the residues that were selected as the interface></p>
+    <p><i>* Log files.</i></p>
+    <p style="background-color: #f0f0f0; max-width: 100%; padding: 5px;"><i>S100P Example:</i> cPEPmatch identified 14 matches using the provided example parameters. 
+      Below is a representation of what the output file, named 'match_list.txt', contains:</p>
+    <br>
+    <div style="text-align: center;">
+    <img src="{% static 'img/match_list_example.png' %}" style="max-width: 70%; padding-right: 5px;">
+    </div><br><br>
+
+    <p><b>Step 5: Post cPEPmatch Evaluation</b></p>
+    <p><i>* Visual Inspection:</i> Visually inspect your matches and identify the best-sterically fitting ones.</p>
+    <p><i>* MD Simulations and HREMD:</i> Evaluate your matches using Molecular Dynamics (MD) simulations or Hamiltonian Replica Exchange 
+      Molecular Dynamics (HREMD). Calculate the binding free energy to select the best matches as lead structures for further binding optimization.</p>
+      
+    <p style="background-color: #f0f0f0; padding: 5px;"><i>S100P Example:</i> Our top two scoring matches, confirmed MD and HREMD simulations, are shown below:</p>
+    
+    <div style="text-align: center;">
+      <img src="{% static 'img/matches_3_7.jpeg' %}" alt="cPEPmatch by Brianda Santini - cyclic peptides for PPI" style="max-width: 70%; padding-right: 50px;">
+    </div><br><br>
+    <br>
+
+    <p>Download the S100P Example output zip file <a href="{% static 'example_download/s100p_cPEPexample.zip'%}" download>here</a>.</p>
+
+    <p><b>Congratulations!</b> You've completed your cPEPmatch and hopefully have promising lead structures for further optimization. If you didn't find suitable binders, 
+      consider experimenting with different matching parameters.</p>
+
+    <p>Enjoy the peptide design process and good luck with your research! <br><br><br></p>
+    <hr>
+  </article>
+  
+  <article>
+    <h2 id="anchor-name-for-md-tutorial">RS-HREMD</h2>
+    <p>
+      <b>1. Choose your protein protein complex</b><br>
+      The uploaded file will be run on our cluster. Must be in pdb file format as explained above.
+    </p>
+    <p>
+      <b>2. Define your receptor chain and ligand chain</b><br>
+      Open your PDB file and search for 'TER'. This will indicate the beginning of the next chain. 
+    </p><br>
+    <div style="text-align: center;">
+    <img src="{% static 'img/ter.png' %}"style="max-width: 100%; padding-right: 5px;">
+    </div><br>
+    
+    <p>
+      Type in the number at 'TER' for your first chain.
+      For the other chain end go to the end of your file and type in the last shown number.
+    </p>
+    <div style="text-align: center;">
+    <img src="{% static 'img/end.png' %}"style="max-width: 100%; padding-right: 5px;">
+    </div><br>
+
+    <p>You will need to know which comes first, the receptor or the ligand to fill it into to the form. In this example the receptor comes first.</p>
+    
+    <div style="text-align: center;">
+    <img src="{% static 'img/form.png' %}"style="max-width: 90%; padding-right: 5px;"></div><br>
+    <p>
+      <b>3. Type your email adress</b><br>
+      You will recieve your final protein protein complex as a pdb file via email. 
+      Check that you don't have any misspellings or else you won't recieve your results.
+      <br><br>
+    </p>
+    <hr>
+  </article>
+
+  <article>
+    <h2>General:</h2>
+    <p>
+      <b>What is a PDB file format?</b><br>
+      PDB is a text file that lists for each atom its serial number, name, residue sequence number, residue name, chain identifier, 
+      and Cartesian coordinates (in Ångströms). We use them for our simulations, so it is important that you upload the correct file format or else
+      the simulation will be unable to start.<br>
+      Therefore, please get familiar with the pdb file format before submitting a job.<br>
+      <b>More information about the format is available at <a href="http://www.wwpdb.org/docs.html">WorldWide Protein Data Bank</a>.</b>
+    </p>
+    <hr>
+  </article>
+{% endblock %}

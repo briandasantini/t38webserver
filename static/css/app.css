@@ -1,0 +1,117 @@
+/*!
+ * Author: Yasmin Saremi, y.saremi@tum.de
+ * Physics Department T38, Technical University of Munich, Garching, Germany.
+ */
+
+html,
+body {
+  height: 100%;
+}
+
+blockquote {
+  border-left: 5px solid rgba(0,0,0,.125);
+  padding-left: 1.25rem;
+}
+
+/*! Guide to Flexbox https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+.flex-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: auto;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin: 0 -5px;
+}
+
+
+
+.thin-column {
+  width: 50%; /* Adjust this value as needed */
+  margin: 0 auto; /* This centers the column */
+}
+
+@media (max-width: 600px) {
+  .thin-column {
+      width: 100%;
+  }
+}
+
+
+
+#id_residue_numbers,
+label[for="id_residue_numbers"] {
+display: none;
+}
+
+/*! Flexbox Item A */
+.item-a {
+  width: 57%;
+  order: 1;
+  margin: 30px 30px 30px 30px;
+}
+
+/*! Flexbox Item B */
+.item-b {
+  width: 37%;
+  order: 2;
+  margin: 10px 10px 10px 10px;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -70px; /*! -70px for the footer */
+}
+
+/*! For a good distance between content and footer */
+.push {
+  height: 150px;
+}
+
+/*! Footer is always at the bottom of webpage */
+/*! https://css-tricks.com/couple-takes-sticky-footer/ */
+footer {
+  height: 70px;
+  padding: 15px 0;
+  background-color: #e9ecef;
+  position: relative;
+}
+
+/*! TUM WEb Style Guide: https://portal.mytum.de/corporatedesign/index_html/stylesweb/index_allgemeine_regeln*/
+p {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.5em;
+  color: #333;
+}
+p.klein { font-size: 14px; line-height: 1.25em; }
+
+h1 {font-size: 35px; font-weight: bold; line-height: 1.14em; color: #333; margin: 0;}
+h2 { font-size: 20px; font-weight: bold; line-height: 1.2em; color: #333; }
+h3 { font-size: 16px; font-weight: bold; line-height: 1.2em; color: #333; }
+h4 { font-size: 16px; font-weight: bold; line-height: 1.2em; color: #333; border-left: 3px solid #cccccc; padding-left: 10px; }
+h5 { font-size: 16px; font-weight: normal; line-height: 1.2em; color: #4d4d4d; }
+h6 { font-size: 16px; font-weight: normal; line-height: 1.2em; color: #737373; font-style: italic; }
+
+ul { list-style: square; margin: 0 0 0 1.2em; }
+il { line-height: 1.6em; }
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 14px;}
+
+/*! For the T38 logo inside the footer */
+.HeaderLeft img {
+	height: 56px;
+	width: 251px;
+	float: left;
+}
+
+/*! For the TUM logo inside the footer */
+.HeaderRight img {
+	height: 56px;
+	width: 91px;
+	float: right;
+}

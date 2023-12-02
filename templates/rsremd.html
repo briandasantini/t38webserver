@@ -1,0 +1,28 @@
+{% extends 'base_jobs.html' %}
+{% load static %}
+
+<!-- RSREMD Job Submission Page -->
+
+{% block title %}RSREMD{% endblock %}
+
+{% block header %}Replica Exchange with Repulsive Scaling{% endblock %}
+{% block image %}{% static 'img/rsremd2.png' %}{% endblock %}
+
+{% block text %}
+  <p>
+    We have extended a replica-exchange-based scheme employing different levels of a repulsive biasing between partners in each replica 
+    simulation (RS-REMD) to simultaneously refine and score protein–protein complexes. <br>
+    The bias acts specifically on the intermolecular interactions based on an increase in effective pairwise van der Waals radii 
+    (repulsive scaling (RS)-REMD) without affecting interactions within each protein or with the solvent. <br><br>
+
+    The submission is demonstrated in the <a href="https://t38webservices.nat.tum.de/tutorial/" target="_blank">tutorial</a>.
+  </p>
+{% endblock %}
+
+
+
+{% block reference %}
+    <a href="https://pubs.acs.org/doi/pdf/10.1021/acs.jcim.0c00853" target="_blank">
+      Efficient Refinement and Free Energy Scoring of Predicted Protein–Protein Complexes Using Replica Exchange with Repulsive Scaling
+    </a>, <em>Till Siebenmorgen and Martin Zacharias </em>.
+{% endblock %}

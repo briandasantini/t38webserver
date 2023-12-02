@@ -1,0 +1,158 @@
+##
+## Per-architecture plugin compilation rules 
+## Copyright 2002, Board of Trustees of the University of Illinois
+## Theoretical Biophysics Group
+##
+
+make-arch-help:
+	@echo "Special vmd-python file"
+
+
+LINUX:
+	$(MAKE) dynlibs staticlibs bins \
+	"ARCH = LINUX" \
+	"COPTO = -fPIC -m32 -o " \
+	"LOPTO = -fPIC -m32 -lstdc++ $(LDFLAGS) -o " \
+	"CC = $(CC)" \
+	"CXX = $(CXX)" \
+	"DEF = -D" \
+	"CCFLAGS = -m32 -O2 -fPIC -Wall" \
+	"CXXFLAGS = -m32 -O2 -fPIC -Wall" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = touch" \
+	"SHLD = gcc -shared"
+
+LINUXAMD64:
+	$(MAKE) dynlibs staticlibs bins \
+	"ARCH = LINUXAMD64" \
+	"CC = $(CC)" \
+	"CXX = $(CXX)" \
+	"COPTO = -fPIC -m64 -o " \
+	"LOPTO = -fPIC -m64 -lstdc++ $(LDFLAGS) -o " \
+	"DEF = -D" \
+	"CCFLAGS = $(CFLAGS) -m64 -O2 -fPIC -Wall" \
+	"CXXFLAGS = $(CXXFLAGS) -m64 -O2 -fPIC -Wall" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = touch" \
+	"SHLD = $(CC) -shared"
+
+LINUXPPC64:
+	$(MAKE) dynlibs staticlibs bins \
+	"ARCH = LINUXPPC64" \
+	"CC = $(CC)" \
+	"CXX = $(CXX)" \
+	"COPTO = -fPIC -m64 -o " \
+	"LOPTO = -fPIC -m64 $(LDFLAGS) -o " \
+	"DEF = -D" \
+	"CCFLAGS = $(CFLAGS) -m64 -O2 -fPIC -Wall" \
+	"CXXFLAGS = $(CXXFLAGS) -m64 -O2 -fPIC -Wall" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = touch" \
+	"SHLD = $(CC) -shared"
+
+MACOSX:
+	$(MAKE) dynlibs staticlibs bins \
+	"ARCH = MACOSX" \
+	"COPTO = -fPIC -o " \
+	"LOPTO = -fPIC $(LDFLAGS) -o " \
+	"CC = $(CC)" \
+	"CXX = $(CXX)" \
+	"DEF = -D" \
+	"CCFLAGS = -Os -Wall -fPIC -dynamic" \
+	"CXXFLAGS = -Os -Wall -fPIC -dynamic" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = ranlib" \
+	"SHLD = $(CXX) -bundle" \
+	"TCLSHLD = $(CXX) -dynamiclib"
+
+MACOSXX86:
+	$(MAKE) dynlibs staticlibs bins \
+	"ARCH = MACOSXX86" \
+	"COPTO = -m32 -fPIC -o " \
+	"LOPTO = -m32 -fPIC -o $(LDFLAGS)" \
+	"CC = $(CC)" \
+	"CXX = $(CXX)" \
+	"DEF = -D" \
+	"CCFLAGS = $(CFLAGS) -m32 -Os -Wall -fPIC -dynamic" \
+	"CXXFLAGS = $(CXXFLAGS) -m32 -Os -Wall -fPIC -dynamic" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = ranlib" \
+	"SHLD = $(CXX) -bundle" \
+	"TCLSHLD = $(CXX) -dynamiclib"
+
+MACOSXX86_64:
+	$(MAKE) dynlibs staticlibs bins \
+	"ARCH = MACOSXX86_64" \
+	"COPTO = -m64 -fPIC -o " \
+	"LOPTO = -m64 -fPIC $(LDFLAGS) -o " \
+	"CC = $(CC)" \
+	"CXX = $(CXX)" \
+	"DEF = -D" \
+	"CCFLAGS = $(CFLAGS) -m64 -Os -Wall -fPIC -dynamic" \
+	"CXXFLAGS = $(CXXFLAGS) -m64 -Os -Wall -fPIC -dynamic" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = ranlib" \
+	"SHLD = $(CXX) -bundle" \
+	"TCLSHLD = $(CXX) -dynamiclib"
+
+WIN32:
+	$(MAKE) dynlibs win32staticlibs win32bins \
+	"ARCH = WIN32" \
+	"COPTO = /Fo" \
+	"LOPTO = $(LDFLAGS) /OUT:" \
+	"CC = $(CC) /nologo /MT /DWIN32" \
+	"CXX = $(CXX) /nologo /MT /TP /DWIN32" \
+	"DEF = /D" \
+	"CCFLAGS = /O2 /G5" \
+	"CXXFLAGS = /O2 /G5" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = touch" \
+	"SHLDFLAGS = /D\"VMDPLUGIN_EXPORTS\"" \
+	"SHLD = link /DLL /nologo /incremental:no \
+		kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib \
+		advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib \
+		odbc32.lib odbccp32.lib ws2_32.lib wsock32.lib /OPT:REF"
+
+WIN64:
+	$(MAKE) dynlibs win32staticlibs win32bins \
+	"ARCH = WIN64" \
+	"COPTO = /Fo" \
+	"LOPTO = $(LDFLAGS) /OUT:" \
+	"CC = $(CC) /nologo /MT /DWIN64" \
+	"CXX = $(CXX) /nologo /MT /TP /DWIN64" \
+	"DEF = /D" \
+	"CCFLAGS =  /EHsc /Wp64 /wd4996 /O2 /D\"_CRT_SECURE_NO_DEPRECATE\"" \
+	"CXXFLAGS = /EHsc /Wp64 /wd4996 /O2 /D\"_CRT_SECURE_NO_DEPRECATE\"" \
+	"TCLLDFLAGS = $(TCLLDFLAGS)" \
+	"NETCDFLDFLAGS = $(NETCDFLDFLAGS)" \
+	"AR = $(AR)" \
+	"NM = $(NM) -p" \
+	"RANLIB = touch" \
+	"SHLDFLAGS = /D\"VMDPLUGIN_EXPORTS\"" \
+	"SHLD = link /DLL /nologo /incremental:no \
+		kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib \
+		advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib \
+		odbc32.lib odbccp32.lib ws2_32.lib wsock32.lib /MACHINE:X64 /OPT:REF"
+
+

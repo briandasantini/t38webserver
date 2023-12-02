@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+
+<!-- Home Page -->
+
+{% block title %}Zacharias Web Services{% endblock %}
+
+{% block content %}
+
+  {% include 'includes/messages.html' %} <!-- Django Message Framework -->
+  <article>
+    <h1>Welcome to Zacharias Web Services!</h1>
+    <section>
+      <h2>The Public Web Server of the T38 Workgroup</h2>
+      <div class="push-a-lil" style="height: 15px;"></div>
+        <p style="max-width: 75%; padding: 5px;">
+          The function of proteins and nucleic acids in living systems is strongly coupled to the molecular motion and dynamics of these biomolecules. We use computer simulation methods to study the structure, function and dynamics of biomolecules. Our goal is to better understand structure formation processes and to elucidate the mechanism of ligand-receptor association in atomic detail.
+        </p>
+        <p style="max-width: 75%; padding: 5px;">
+          We offer some of our simulations here for public use. Please look through our simulation catalog and see if you can find the right service for you.<br>
+          We run your files on our cluster and return you your final product via email.<br><br>
+        </p>
+        <p>
+          <b>Please, check our <a target="_blank" href="{% url 'tutorial' %}">User Guide</a> in order to become familiar with the submission service.</b><br><br>
+        </p>
+      <h4>Reference</h4>
+        <p>
+          Please cite the given reference if you use our simulations.
+	</p><br><br>
+    </section>
+      
+    <section>
+    <!-- Gallery -->
+    <!-- https://www.freecodecamp.org/news/how-to-create-an-image-gallery-with-css-grid-e0f0fd666a5c/ -->
+      <h2>Services</h2>
+        <!-- Please limit yourself to no more than three columns before beginning a new row. -->
+        <!-- First Row -->
+        <div class="row">
+
+          <!-- <div class="col-lg-4 mb-4 mb-lg-0">
+            <a href="http://10.152.219.243/" target="_blank">
+            <img
+              src="{% static 'img/pepattract_illustration.jpg' %}"
+              class="w-100 shadow-1-strong rounded mb-4 hover-shadow"
+              alt="Attract Online Server"
+              style="object-fit: cover; opacity: 0.6; filter: brightness(50%)"
+            /></a>
+            <div class="caption">
+              <h2 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">Attract Online Server</h2>
+            </div>
+          </div> -->
+
+          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <a href="{% url 'job:cpepmatch' %}">
+            <img
+              src="{% static 'img/cpep.jpg' %}"
+              class="w-100 shadow-1-strong rounded mb-4 hover-shadow"
+              alt="cPep Match"
+              style="object-fit: cover; opacity: 0.6; filter: brightness(50%)"
+            /></a>
+            <div class="caption">
+              <h2 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">Cyclic Peptide Matching Algorithm</h2>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <a href="{% url 'job:rsremd' %}">
+            <img
+              src="{% static 'img/rsremd.png' %}"
+              class="w-100 shadow-1-strong rounded mb-4 hover-shadow"
+              alt="RSREMD Simulation"
+              style="object-fit: cover; opacity: 0.6; filter: brightness(50%)"
+            /></a>
+            <div class="caption">
+              <h2 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">Replica Exchange with Repulsive Scaling</h2>
+            </div>
+          </div>
+
+        </div>
+
+  </section>
+
+  </article>
+{% endblock %}

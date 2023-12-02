@@ -1,0 +1,21 @@
+# Energy Minimization 
+ &cntrl
+	! GENERAL FLAGS DESCRIBING THE CALCULATION
+  	imin=1, 	! Flag to run minimzation (=1 perform energy minimizatin) 
+	
+	
+	! NATURE AND FORMAT OF THE INPUT
+	ntx=1,		! Flag to read the coordinates and velocities from an ASCII coordinate file (=1 coord. but no velocities, deafult)
+	irest=0,	! Flag to restart the simulations with velocities and step counter from before (=0 do not restart sim, instead run new sim; default)
+	
+	! NATURE AND FORMAT OF THE OUTPUT	
+	ntpr=100,	! Num of Timesteps to Print Readable energy information
+	ntwx=0,		! freq of writing coordinates to the mdcrd file
+  
+	! ENERGY MINIMIZATION
+	maxcyc=2000,	! max number of cycles of minimization; default = 1
+	ncyc=1000,	! ntmin=1(default), method of minimization will be swicthed from steepest descent to conjugate gradient after ncyc cycles  	
+
+	! POTENTIAL FUNCTION PARAMETERS
+	cut=8.0,	! Flag that specifies the nonbonded cutoff in Angstrom
+ &end

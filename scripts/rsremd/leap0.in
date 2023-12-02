@@ -1,0 +1,5 @@
+source leaprc.protein.ff14SB
+source leaprc.water.opc
+mol = loadpdb XXXX
+solvateoct mol OPCBOX 10.0
+quit

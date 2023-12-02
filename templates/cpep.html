@@ -1,0 +1,66 @@
+{% extends 'base_jobs.html' %}
+{% load static %}
+
+<!-- cPep Match Job Submission Page -->
+
+{% block title %}cPEPmatch{% endblock %}
+
+{% block header %}cPEPmatch{% endblock %}
+
+
+{% block image %}{% static 'img/cpep.png' %}{% endblock %}
+
+{% block text %}
+  <h3><br> Cyclic Peptide Matching Algorithm </h3>
+  <p><br>
+    cPEPmatch is a computational tool created to assist in the rational design of cyclic peptide mimetics capable of potentially 
+    modulating interactions within protein-protein or protein-ligand complexes. <br><br>
+    
+    You can find the details of the method <a href="https://pubmed.ncbi.nlm.nih.gov/33134275/" target="_blank">here</a>.<br><br>
+
+    Impatient and want to get started right away?
+  </p>
+  
+  <button id="toggleQuickGuide">Toggle our Quick Guide</button>
+  <div id="quickGuide" style="display: none; background-color: #f1f1f1; border: 1px solid #ede8e8; padding: 20px; border-radius: 0px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);">
+  
+    <b>Step 1: Upload </b>your target protein-protein or protein-ligand complex's crystal structure in PDB format<br><br>
+    <b>Step 2: Identify the protein chains </b>you want to mimic and target in the uploaded PDB file. Make sure to specify the protein chain names exactly as they appear in the PDB file.<br><br>
+    <b>Step 3: Coose Parameters</b>
+      <li><i>Cutoff:</i> Set the interface cutoff distance (Default: 6 Å).</li>
+      <li><i>Threshold:</i> Choose the fit-RMSD maximum for a match (Default: 0.7 Å - Recommended: 0.5-1.0).</li>
+      <li><i>Motif Size:</i> Define the motif length (Default: 5 amino acids, Recommended: Adjust based on binding site characteristics, 4-7).</li>
+      <li><i>(Optional) Residue Numbers: </i>Specify specific residues if you know the binding hot spots. Hot spots are residues contributing the most 
+        to binding free energy. Ensure that the number of residues specified is at least equal to the size of the motif. 
+        Additionally, when this option is used, the recommended threshold for fit-RMSD is adjusted to 1-2 Å.</li>
+     <br>
+     <b>Step 4: Submit and Review:</b> After submitting your job, you'll receive an email with a link to download a zip file containing your results. Review the results to identify potential cyclic peptide matches.
+     <br><br>
+     Enjoy the peptide design process and good luck with your research!
+
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var quickGuide = document.getElementById("quickGuide");
+        var toggleButton = document.getElementById("toggleQuickGuide");
+    
+        toggleButton.addEventListener("click", function () {
+          if (quickGuide.style.display === "none" || quickGuide.style.display === "") {
+            quickGuide.style.display = "block";
+          } else {
+            quickGuide.style.display = "none";
+          }
+        });
+      });
+    </script>
+  <p> <br> Or, for a more comprehensive guide with a practical example, check out our full <a href="https://t38webservices.nat.tum.de/tutorial/" target="_blank">tutorial</a>.
+  </p>
+
+{% endblock %}
+
+
+{% block reference %}
+  <a href="https://pubmed.ncbi.nlm.nih.gov/33134275/" target="_blank">
+    Rapid in silico Design of Potential Cyclic Peptide Binders Targeting Protein-Protein Interfaces
+  </a>, <em>Brianda L Santini and Martin Zacharias </em>.
+{% endblock %}

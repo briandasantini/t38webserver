@@ -1,0 +1,58 @@
+
+
+cPEPmatch process initiated.
+
+
+Step 1: Updating the cPEP database.
+Progress: [############--------------------------------------] 25.0%
+Step 1 complete.
+
+
+Step 2: Characterizing the protein interface.
+cpeps100p_34e3b094-3239-49b3-9905-0f5d82c06f07.pdb -> interface.pdb
+Progress: [#########################-------------------------] 50.0%
+Step 2 complete.
+
+
+Step 3: Finding matches. 
+Note: This step might take longer for non-consecutive motifs.
+Progress: [######################################------------] 75.0%
+Step 3 complete.
+
+
+Step 4: Finalizing - mutating and refining your matches.
+Progress: [##################################################] 100.0%
+Yay, all steps completed successfully! 
+
+
+
+List of matches found by cPEPmatch.
+Motif Size: 5 
+Interface Cutoff: 6 
+Fit-RMSD Threshold: 2.0 
+
+ Match  PDB   Dist-RMSD      cPep Residues              PP-Interface Residues      Fit-RMSD
+
+     1  1kal    1.7036       4    6   13   17   19      32   41   43   78   92      0.8242
+     2  1znu    1.4826      18   20   23   25   27      32   41   78   90   92      0.8980
+     3  2lwt    1.8484       1    6   11   14   16      28   32   37   41   43      1.9148
+     4  2lwt    1.9618       1    6   10   14   16      28   32   37   41   43      2.5561
+     5  2lwv    1.9023       3    5    8   15   17      32   43   49   78   92      1.5827
+     6  2lye    1.8721       1    5    9   13   15      28   32   37   41   43      1.3881
+     7  2lyf    1.9537       1    5    9   13   15      28   32   37   41   43      2.0695
+     8  2nb5    1.8391       3    5    8   15   17      32   43   49   78   92      1.2936
+     9  3pp4    1.8039       5    8   14   20   24      34   37   41   78   90      1.2305
+    10  4ttm    1.5786       8   15   17   21   23      34   41   43   78   92      2.5484
+    11  4ttn    1.5989       8   15   17   21   23      34   41   43   78   92      2.5233
+    12  4tto    1.5585       8   15   17   21   23      34   41   43   78   92      2.4890
+    13  7k7x    1.6365       4    6    9   27   29      32   34   37   41   43      1.1528
+    14  7lhc    1.8767      12   15   17   21   23      34   41   43   78   92      0.8075
+
+ 
+Your results are now available for 30 days
+
+
+
+Thank you for using cPEPmatch!
+
+
